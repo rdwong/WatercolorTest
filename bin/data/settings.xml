@@ -1,0 +1,47 @@
+<settings>
+	<control>
+		<type>slider</type>
+		<label>Brush start radius</label>
+		<value>20</value>
+	</control>
+	<control>
+		<type>slider</type>
+		<label>Brush expansion rate</label>
+		<value>1</value>
+	</control>
+	<control>
+		<type>slider</type>
+		<label>Brush expansion decay</label>
+		<value>0.96</value>
+	</control>
+	<control>
+		<type>slider</type>
+		<label>Min duration (frames)</label>
+		<value>200</value>
+	</control>
+	<control>
+		<type>slider</type>
+		<label>Max duration (frames)</label>
+		<value>400</value>
+	</control>
+	<control>
+		<type>toggle</type>
+		<label>Toggle blur</label>
+		<value>0</value>
+	</control>
+	<control>
+		<type>slider</type>
+		<label>Blur strength</label>
+		<value>3</value>
+	</control>
+	<control>
+		<type>slider</type>
+		<label>Blur radius</label>
+		<value>4</value>
+	</control>
+	<control>
+		<type>slider</type>
+		<label>Number of Blur Passes</label>
+		<value>2</value>
+	</control>
+</settings>
