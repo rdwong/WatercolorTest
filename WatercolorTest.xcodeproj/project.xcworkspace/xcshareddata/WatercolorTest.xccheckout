@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FDB0D271-56AF-446C-B923-4A4402B12D84</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WatercolorTest</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</key>
+		<string>https://github.com/openFrameworks/openFrameworks.git</string>
+		<key>53177725E94A1C2C9B819AF9201B0F11FF3C0653</key>
+		<string>https://github.com/rdwong/WatercolorTest.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WatercolorTest.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</key>
+		<string>../../../../..</string>
+		<key>53177725E94A1C2C9B819AF9201B0F11FF3C0653</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/rdwong/WatercolorTest.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>53177725E94A1C2C9B819AF9201B0F11FF3C0653</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>..</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>53177725E94A1C2C9B819AF9201B0F11FF3C0653</string>
+			<key>IDESourceControlWCCName</key>
+			<string>WatercolorTest</string>
+		</dict>
+	</array>
+</dict>
+</plist>

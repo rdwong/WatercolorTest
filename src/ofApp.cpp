@@ -8,6 +8,10 @@ void ofApp::setup(){
     loadShaders();
     
     shader = new PingPongFbo();
+    shader->clearFbos();
+    
+    dilate = new PingPongFbo();
+    dilate->clearFbos();
 }
 
 //--------------------------------------------------------------
@@ -21,8 +25,8 @@ void ofApp::loadShaders()
     blurRadius = 4;
     blurNumPasses = 2;
     
-    // Noise
-    
+    // White to alpha
+    whiteToAlpha.load("shaders/makeWhiteAlpha");
     
 }
 
@@ -106,16 +110,28 @@ void ofApp::applyBlur()
 void ofApp::update(){
     
     cv->update();
-    
     shader->castOutputFbo(cv->fbo);
     
     if (bUseBlur) applyBlur();
+    
+    // DILATE
+    dilate->swapFbos();
+    
+    dilate->outFbo()->begin();
+    if (ofGetFrameNum()%3 == 0)
+        dilate->inFbo()->draw(-0.5, -0.5, ofGetWidth()+1, ofGetHeight()+1);
+    else
+        dilate->inFbo()->draw(0, 0);
+    whiteToAlpha.begin();
+    shader->outFbo()->draw(0, 0);
+    whiteToAlpha.end();
+    dilate->outFbo()->end();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    shader->outFbo()->draw(0, 0);
+    dilate->outFbo()->draw(0, 0);
     
     GUI.draw();
     ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate()), 1, ofGetHeight()-2);

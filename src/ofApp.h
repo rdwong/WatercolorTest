@@ -37,10 +37,14 @@ class ofApp : public ofBaseApp{
     int blurRadius;
     int blurNumPasses;
     
+    // ALPHA REMOVAL
+    ofShader whiteToAlpha;
+    
     // NOISE STUFF
     ofShader noise;
     
     // PING PONG
     PingPongFbo* shader;
+    PingPongFbo* dilate;
     
 };

@@ -73,13 +73,15 @@ void Canvas::update()
     buffer->draw(0, 0);
     
     for (int i = drops.size()-1; i >= 0; i--) {
-        drops[i]->update();
-        drops[i]->draw();
-        if (drops[i]->bDead()) {
-            delete drops[i];
-            drops[i] = NULL;
-            drops.erase(drops.begin()+i);
+        if (!drops[i]->bDead()) {
+            drops[i]->update();
+            drops[i]->draw();
         }
+        //if (drops[i]->bDead()) {
+        //    delete drops[i];
+        //    drops[i] = NULL;
+        //    drops.erase(drops.begin()+i);
+        //}
     }
     fbo->end();
     

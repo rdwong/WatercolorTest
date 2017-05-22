@@ -22,6 +22,7 @@ public:
     ofFbo* outFbo();
     void swapFbos();
     void castOutputFbo(ofFbo* addThis, bool bClearPrevious=false);
+    void clearFbos();
     
     PingPongFbo();
     

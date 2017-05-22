@@ -41,3 +41,12 @@ void PingPongFbo::castOutputFbo(ofFbo* addThis, bool bClearPrevious)
     addThis->draw(0, 0);
     outFbo()->end();
 }
+
+void PingPongFbo::clearFbos()
+{
+    for (int i = 0; i < 2; i++){
+        fbo[i]->begin();
+        ofClear(255);
+        fbo[i]->end();
+    }
+}
