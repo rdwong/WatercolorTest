@@ -2,7 +2,7 @@
 	<control>
 		<type>slider</type>
 		<label>Brush start radius</label>
-		<value>20</value>
+		<value>5</value>
 	</control>
 	<control>
 		<type>slider</type>
@@ -12,17 +12,17 @@
 	<control>
 		<type>slider</type>
 		<label>Brush expansion decay</label>
-		<value>0.96</value>
+		<value>0.999</value>
 	</control>
 	<control>
 		<type>slider</type>
 		<label>Min duration (frames)</label>
-		<value>200</value>
+		<value>201.1</value>
 	</control>
 	<control>
 		<type>slider</type>
 		<label>Max duration (frames)</label>
-		<value>400</value>
+		<value>708</value>
 	</control>
 	<control>
 		<type>toggle</type>

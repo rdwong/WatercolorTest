@@ -44,7 +44,7 @@ class ofApp : public ofBaseApp{
     ofShader noise;
     
     // PING PONG
-    PingPongFbo* shader;
+    PingPongFbo* blur;
     PingPongFbo* dilate;
     
 };

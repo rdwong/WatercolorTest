@@ -16,6 +16,8 @@ PingPongFbo::PingPongFbo()
     fbo[1]->allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
     zOrder[0] = 0;
     zOrder[1] = 1;
+    
+    clearFbos();
 }
 
 ofFbo* PingPongFbo::inFbo()

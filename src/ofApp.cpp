@@ -7,11 +7,8 @@ void ofApp::setup(){
     initTouchGui();
     loadShaders();
     
-    shader = new PingPongFbo();
-    shader->clearFbos();
-    
+    blur = new PingPongFbo();
     dilate = new PingPongFbo();
-    dilate->clearFbos();
 }
 
 //--------------------------------------------------------------
@@ -42,11 +39,11 @@ void ofApp::initTouchGui()
     
     GUI.addText("");
     GUI.addTitleText("BRUSH VARIABLES")->setBackgroundVisible(true);
-    GUI.addSlider("Brush start radius", &CanvasVariables::startRadius, 0, 200);
-    GUI.addSlider("Brush expansion rate", &CanvasVariables::expansionRate, 0, 10);
-    GUI.addSlider("Brush expansion decay", &CanvasVariables::expansionDecay, 0.5, 0.999);
-    GUI.addSlider("Min duration (frames)", &CanvasVariables::minDuration, 10, 500);
-    GUI.addSlider("Max duration (frames)", &CanvasVariables::maxDuration, 200, 1000);
+    GUI.addSlider("Brush start radius", &DropVariables::startRadius, 0, 200);
+    GUI.addSlider("Brush expansion rate", &DropVariables::expansionRate, 0, 10);
+    GUI.addSlider("Brush expansion decay", &DropVariables::expansionDecay, 0.5, 0.999);
+    GUI.addSlider("Min duration (frames)", &DropVariables::minDuration, 10, 500);
+    GUI.addSlider("Max duration (frames)", &DropVariables::maxDuration, 200, 1000);
     
     GUI.addText("");
     GUI.addTitleText("BLUR VARIABLES")->setBackgroundVisible(true);
@@ -82,23 +79,23 @@ void ofApp::applyBlur()
     ofSetColor(255);
     for (int i = 0; i < numPasses; i++) {
         
-        shader->swapFbos();
-        shader->outFbo()->begin();
+        blur->swapFbos();
+        blur->outFbo()->begin();
         blurH.begin();
         blurH.setUniform1f("amt", amt);
         blurH.setUniform1f("radius", radius);
-        shader->inFbo()->draw(0, 0);
+        blur->inFbo()->draw(0, 0);
         blurH.end();
-        shader->outFbo()->end();
+        blur->outFbo()->end();
         
-        shader->swapFbos();
-        shader->outFbo()->begin();
+        blur->swapFbos();
+        blur->outFbo()->begin();
         blurV.begin();
         blurV.setUniform1f("amt", amt);
         blurV.setUniform1f("radius", radius);
-        shader->inFbo()->draw(0, 0);
+        blur->inFbo()->draw(0, 0);
         blurV.end();
-        shader->outFbo()->end();
+        blur->outFbo()->end();
         
     }
 }
@@ -110,28 +107,13 @@ void ofApp::applyBlur()
 void ofApp::update(){
     
     cv->update();
-    shader->castOutputFbo(cv->fbo);
     
-    if (bUseBlur) applyBlur();
-    
-    // DILATE
-    dilate->swapFbos();
-    
-    dilate->outFbo()->begin();
-    if (ofGetFrameNum()%3 == 0)
-        dilate->inFbo()->draw(-0.5, -0.5, ofGetWidth()+1, ofGetHeight()+1);
-    else
-        dilate->inFbo()->draw(0, 0);
-    whiteToAlpha.begin();
-    shader->outFbo()->draw(0, 0);
-    whiteToAlpha.end();
-    dilate->outFbo()->end();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    dilate->outFbo()->draw(0, 0);
+    cv->baseFbo->outFbo()->draw(0, 0);
     
     GUI.draw();
     ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate()), 1, ofGetHeight()-2);
@@ -144,7 +126,7 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    if (key == 'c') cv->clear();
+    
 }
 
 //--------------------------------------------------------------
